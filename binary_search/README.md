@@ -1,29 +1,23 @@
-# 704. Binary Search
+# Koko Eating Bananas Problem
+
+This is a solution to the "Koko Eating Bananas" problem.
 
 ## Problem
 
-Given a sorted array of integers `nums` and an integer `target`, return the index of the target if it exists in the array. Otherwise, return `-1`.
+Koko loves to eat bananas. There are `n` piles of bananas, the ith pile has `piles[i]` bananas. Koko wants to eat all the bananas in `h` hours, and she can choose her eating speed `k` (bananas per hour). She eats from one pile per hour. If the pile has fewer than `k` bananas, she eats all of them.
 
-The algorithm must run in **O(log n)** time.
+**Goal:** Find the minimum integer `k` so that Koko can eat all the bananas within `h` hours.
 
-## Approach
+## Solution
 
-Since the array is sorted, we use **Binary Search**.
+- Uses **binary search on answer** technique.
+- Calculates total hours required for a given `k` using integer arithmetic: `(pile + k - 1) // k`.
+- Time complexity: `O(n * log(max(piles)))`.
+- Space complexity: `O(1)`.
 
-1. Start with two pointers:
+## Example
 
-   * `left` at the beginning of the array
-   * `right` at the end of the array
-2. Find the middle index `mid`.
-3. Compare `nums[mid]` with `target`:
-
-   * If equal → return `mid`
-   * If `nums[mid] < target` → search the right half
-   * If `nums[mid] > target` → search the left half
-4. Repeat until the target is found or the search space becomes empty.
-
-## Complexity
-
-* **Time Complexity:** O(log n)
-* **Space Complexity:** O(1)
-
+```python
+piles = [3,6,7,11]
+h = 8
+print(minEatingSpeed(piles, h))  # Output: 4
